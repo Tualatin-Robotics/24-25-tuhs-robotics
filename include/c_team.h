@@ -14,6 +14,4 @@ void c_drive() {
 
 	left_front.move_voltage(left * MOVE_VOLT);
 	right_front.move_voltage(right * -MOVE_VOLT);
-
-	pros::delay(20);
 }
