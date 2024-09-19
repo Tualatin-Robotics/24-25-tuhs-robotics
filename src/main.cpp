@@ -20,7 +20,7 @@ void opcontrol() {
 		int left = master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
 		int right = master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
 
-		left_front.move_voltage(left * MOVE_VOLT);
+		left_front.move_voltage(left * MOVE_VOLT*2);
 		right_front.move_voltage(right * -MOVE_VOLT);
 
 
