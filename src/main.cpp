@@ -26,8 +26,6 @@ void opcontrol() {
 		int thing=1;
 		if(a_buttonPressed) thing*=-1;
 		if(b_buttonPressed) thing*=-1;
-		if(x_buttonPressed) thing*=-1;
-		if(y_buttonPressed) thing*=-1;
 
 		left_front.move_voltage(left * MOVE_VOLT * thing);
 		right_front.move_voltage(right * -MOVE_VOLT * thing);
