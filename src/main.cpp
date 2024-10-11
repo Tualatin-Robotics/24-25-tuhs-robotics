@@ -1,7 +1,5 @@
-#define C_TEAM;
-
-#include "main.h"
-#include "variables.h"
+//Change team here:
+#define B_TEAM;
 
 #ifdef A_TEAM;
 #include "a_team.h"
@@ -27,15 +25,6 @@ void autonomous() {
 
 void opcontrol() {
 	while (true) {
-		/*switch (team) {
-			case TEAM_A:
-				a_drive();
-			case TEAM_B:
-				b_drive();
-			case TEAM_C:
-				c_drive();
-		}*/
-
 		drive();
 
 		pros::delay(20);

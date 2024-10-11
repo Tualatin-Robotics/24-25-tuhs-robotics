@@ -1,3 +1,6 @@
+#include "main.h"
+#include "variables.h"
+
 pros::Controller master(pros::E_CONTROLLER_MASTER);
 
 pros::Motor left_front(2);
@@ -6,7 +9,7 @@ pros::Motor left_back(4);
 pros::Motor right_back(3);
 
 void auton() {
-	
+
 }
 
 void drive() {
