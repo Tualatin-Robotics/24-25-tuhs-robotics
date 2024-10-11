@@ -1,29 +1,43 @@
+#define C_TEAM;
+
 #include "main.h"
-#include "a_team.h"
-#include "b_team.h"
-#include "c_team.h"
 #include "variables.h"
 
-int team = TEAM_MEDIA;
+#ifdef A_TEAM;
+#include "a_team.h"
+#endif
+
+#ifdef B_TEAM;
+#include "b_team.h"
+#endif
+
+#ifdef C_TEAM;
+#include "c_team.h"
+#endif
+
+//int team = TEAM_C;
 
 void initialize() {
 	
 }
 
 void autonomous() {
-	//This is just a test comment
+	auton();
 }
 
 void opcontrol() {
 	while (true) {
-		switch (team) {
+		/*switch (team) {
 			case TEAM_A:
 				a_drive();
 			case TEAM_B:
 				b_drive();
 			case TEAM_C:
 				c_drive();
-		}
+		}*/
+
+		drive();
+
 		pros::delay(20);
 	}
 }

@@ -1,5 +1,3 @@
-#include "main.h"
-
 const int TEAM_NONE = 0;
 const int TEAM_A = 1;
 const int TEAM_B = 2;
