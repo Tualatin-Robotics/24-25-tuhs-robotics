@@ -14,10 +14,10 @@ pros::Motor right_back(17);
 void auton() {
 	while(true){
 		int a[16];
+		//uncomment ln18-19 to test parseFileInput() once c_team_auton_file.txt has information that should look something like: "127,0,-127,0,1,1,0,1,0,0,0,0,1,1,0,1" (actual values may vary)
 		/*parseFileInput("c_team_auton_file.txt",a,0);
 		doStuff(a[0],a[1],a[2],a[3],a[4],a[5],a[6],a[7],a[8],a[9],a[10],a[11],a[12],a[13],a[14],a[15]);*/
-		pros::delay(2000);//2 seconds
-		//this will later be mathematically aligned with the speed at which the controller input is recorded
+		pros::delay(2000);//2 seconds, this will later be mathematically aligned with the speed at which the controller input is recorded
 	}
 }
 
@@ -66,15 +66,14 @@ void logInputs(string fileName,int leftX=0, int leftY=0, int rightX=0, int right
 
 void parseFileInput(string fileName,int array[16],int lineNumber){//this probably won't work as expected so be careful when testing
 	ifstream theFile(fileName);
-	char line[100];
-	for(int i=0;i<lineNumber;i++) theFile.get(line,100);//I think this will work actually
+	char line[50];
+	for(int i=0;i<lineNumber;i++) theFile.get(line,50);
 	theFile.close();
 	char* t=strtok(line,",");
 	int number=0;
 	while(t!=NULL){
-		array[number]=(int)t;//functions cannot return arrays, so this one modifies an array passed as an argument
+		if(array[number])array[number]=(int)t;
 		number++;
 		t=strtok(NULL,",");
 	}
-	//so far, this entire function should retrieve the first line of the file, then parse it and put it into an int array
 }
