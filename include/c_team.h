@@ -66,10 +66,8 @@ void logInputs(string fileName,int leftX=0, int leftY=0, int rightX=0, int right
 
 void parseFileInput(string fileName,int array[16],int lineNumber){//this probably won't work as expected so be careful when testing
 	ifstream theFile(fileName);
-	string thing;
-	getline(theFile,thing);//this is easier than converting a string to a char array
-	char line[thing.length()];
-	theFile.getline(line,thing.length());//still need to figure out how to get appropriate line of file
+	char line[100];
+	for(int i=0;i<lineNumber;i++) theFile.get(line,100);//I think this will work actually
 	theFile.close();
 	char* t=strtok(line,",");
 	int number=0;
