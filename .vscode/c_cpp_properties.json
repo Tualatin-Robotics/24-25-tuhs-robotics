@@ -4,30 +4,14 @@
       "name": "PROS Project",
       "includePath": [
         "${workspaceFolder}/**",
-<<<<<<< HEAD
-        "/Users/benjamin/Documents/GitHub/24-25-tuhs-robotics-benjamin/include"
-=======
         "c:\\Users\\Robotics\\Documents\\GitHub\\24-25-tuhs-robotics\\include",
         "/home/kol/Documents/Vex Robotics/transfer/24-25-tuhs-robotics/include"
->>>>>>> a984c3e95b41e6bb983bc6a5947d21979f683095
       ],
       "defines": [
         "_DEBUG",
         "UNICODE",
         "_UNICODE"
       ],
-<<<<<<< HEAD
-      "compilerPath": "/Users/benjamin/Library/Application Support/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-macos/bin/arm-none-eabi-g++",
-      "cStandard": "gnu11",
-      "cppStandard": "gnu++20",
-      "intelliSenseMode": "gcc-arm",
-      "macFrameworkPath": [
-        "/System/Library/Frameworks"
-      ],
-      "browse": {
-        "path": [
-          "/Users/benjamin/Documents/GitHub/24-25-tuhs-robotics-benjamin"
-=======
       "compilerPath": "/home/kol/.config/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-linux/bin/arm-none-eabi-g++",
       "cStandard": "gnu11",
       "cppStandard": "gnu++20",
@@ -35,7 +19,6 @@
       "browse": {
         "path": [
           "/home/kol/Documents/Vex Robotics/transfer/24-25-tuhs-robotics"
->>>>>>> a984c3e95b41e6bb983bc6a5947d21979f683095
         ],
         "limitSymbolsToIncludedHeaders": true,
         "databaseFilename": ""
