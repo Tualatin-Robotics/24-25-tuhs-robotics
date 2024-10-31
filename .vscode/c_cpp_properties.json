@@ -5,20 +5,21 @@
       "includePath": [
         "${workspaceFolder}/**",
         "c:\\Users\\Robotics\\Documents\\GitHub\\24-25-tuhs-robotics\\include",
-        "/home/kol/Documents/Vex Robotics/transfer/24-25-tuhs-robotics/include"
+        "/home/kol/Documents/Vex Robotics/transfer/24-25-tuhs-robotics/include",
+        "c:\\Users\\silas\\SSTUFF\\Program Documents\\Godot\\24-25-tuhs-robotics\\include"
       ],
       "defines": [
         "_DEBUG",
         "UNICODE",
         "_UNICODE"
       ],
-      "compilerPath": "/home/kol/.config/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-linux/bin/arm-none-eabi-g++",
+      "compilerPath": "c:\\Users\\silas\\AppData\\Roaming\\Code\\User\\globalStorage\\sigbots.pros\\install\\pros-toolchain-windows\\usr\\bin\\arm-none-eabi-g++",
       "cStandard": "gnu11",
       "cppStandard": "gnu++20",
       "intelliSenseMode": "gcc-arm",
       "browse": {
         "path": [
-          "/home/kol/Documents/Vex Robotics/transfer/24-25-tuhs-robotics"
+          "c:\\Users\\silas\\SSTUFF\\Program Documents\\Godot\\24-25-tuhs-robotics"
         ],
         "limitSymbolsToIncludedHeaders": true,
         "databaseFilename": ""

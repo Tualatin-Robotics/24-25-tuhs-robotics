@@ -16,7 +16,7 @@
 //int team = TEAM_C;
 
 void initialize() {
-	
+	init();
 }
 
 void autonomous() {

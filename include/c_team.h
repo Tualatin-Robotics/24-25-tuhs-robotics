@@ -8,6 +8,8 @@ pros::Motor right_front(20);
 pros::Motor left_back(18);
 pros::Motor right_back(17);
 
+void init() {}
+
 void auton() {
 	left_front.move_voltage(127.0 * MOVE_VOLT);
 	right_front.move_voltage(127.0 * -MOVE_VOLT);
