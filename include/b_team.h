@@ -25,12 +25,12 @@ void drive() {
 	left_front.move_voltage(left * MOVE_VOLT);
 	right_front.move_voltage(right * -MOVE_VOLT);
 
-	int left_trig = master.get_digital(pros::E_CONTROLLER_DIGITAL_L1);
-	int right_trig = master.get_digital(pros::E_CONTROLLER_DIGITAL_R1);
+	int left_trig = master.get_digital(pros::E_CONTROLLER_DIGITAL_L2);
+	int right_trig = master.get_digital(pros::E_CONTROLLER_DIGITAL_R2);
+	int left_bump = master.get_digital(pros::E_CONTROLLER_DIGITAL_L1);
+	int right_bump = master.get_digital(pros::E_CONTROLLER_DIGITAL_R1);
 
-	int trig = left_trig - right_trig;
+	int trig = (left_bump*4 + left_trig*12) - (right_bump*4 + right_trig*12);
 
-	std::cout << "trig" << std::endl;
-
-	arm.move_voltage(4000*trig);
+	arm.move_voltage(1000*trig);
 }
