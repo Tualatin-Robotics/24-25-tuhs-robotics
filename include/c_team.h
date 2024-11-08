@@ -11,6 +11,45 @@ pros::Motor right_front(20);
 pros::Motor left_back(18);
 pros::Motor right_back(17);
 
+
+void logInputs(string fileName,int leftX=0, int leftY=0, int rightX=0, int rightY=0, 
+	bool a=false, bool b=false, bool x=false, bool y=false, 
+	bool right=false,bool down=false, bool up=false, bool left=false,
+	bool l1=false, bool l2=false, bool r1=false, bool r2=false)
+{
+	ofstream theFile(fileName);
+	theFile<<leftX<<","<<leftY<<","<<rightX<<","<<rightY<<","<<a<<","<<b<<","<<x<<","<<y<<","<<right<<","<<down<<","<<up<<","<<left<<","<<l1<<","<<l2<<","<<r1<<","<<r2<<",\n";
+	theFile.close();
+}
+
+void parseFileInput(string fileName,int array[16],int lineNumber){//this probably won't work as expected so be careful when testing
+	ifstream theFile(fileName);
+	char line[50];
+	for(int i=0;i<lineNumber;i++) theFile.get(line,50);
+	theFile.close();
+	char* t=strtok(line,",");
+	int number=0;
+	while(t!=NULL && number<16){
+		array[number]=(int)t;
+		number++;
+		t=strtok(NULL,",");
+	}
+}
+
+
+void doStuff(int leftX=0, int leftY=0, int rightX=0, int rightY=0, 
+	bool a=false, bool b=false, bool x=false, bool y=false, 
+	bool right=false,bool down=false, bool up=false, bool left=false,
+	bool l1=false, bool l2=false, bool r1=false, bool r2=false){
+	//all of the functionality code for the bots goes here
+	left_front.move_voltage((leftX * MOVE_VOLT * 0.5) + (a*6000));
+	right_front.move_voltage((leftX * -MOVE_VOLT * 0.5) + (a*6000));
+	//button input will eventually be recorded here
+	//uncomment ln57 to test logInputs()
+	logInputs("/usd/c_team_auton_file.txt",leftX,leftY,rightX,rightY,a,b,x,y,right,down,up,left,l1,l2,r1,r2);
+};
+
+
 void auton() {
 	int frame=0;
 	while(true){
@@ -45,37 +84,3 @@ void drive() {
 	
 }
 
-void doStuff(int leftX=0, int leftY=0, int rightX=0, int rightY=0, 
-	bool a=false, bool b=false, bool x=false, bool y, 
-	bool right=false,bool down=false, bool up=false, bool left=false,
-	bool l1=false, bool l2=false, bool r1=false, bool r2=false){
-	//all of the functionality code for the bots goes here
-	left_front.move_voltage((leftX * MOVE_VOLT * 0.5 *a) + (a*6000));
-	right_front.move_voltage((leftX * -MOVE_VOLT * 0.5 *a) + (a*6000));
-	//button input will eventually be recorded here
-	//uncomment ln57 to test logInputs()
-	//logInputs("c_team_auton_file.txt",leftX,leftY,rightX,rightY,a,b,x,y,right,down,up,left,l1,l2,r1,r2);
-};
-
-void logInputs(string fileName,int leftX=0, int leftY=0, int rightX=0, int rightY=0, 
-	bool a=false, bool b=false, bool x=false, bool y=false, 
-	bool right=false,bool down=false, bool up=false, bool left=false,
-	bool l1=false, bool l2=false, bool r1=false, bool r2=false){
-		ofstream theFile(fileName);
-		theFile<<leftX<<","<<leftY<<","<<rightX<<","<<rightY<<","<<a<<","<<b<<","<<x<<","<<y<<","<<right<<","<<down<<","<<up<<","<<left<<","<<l1<<","<<l2<<","<<r1<<","<<r2<<",\n";
-		theFile.close();
-}
-
-void parseFileInput(string fileName,int array[16],int lineNumber){//this probably won't work as expected so be careful when testing
-	ifstream theFile(fileName);
-	char line[50];
-	for(int i=0;i<lineNumber;i++) theFile.get(line,50);
-	theFile.close();
-	char* t=strtok(line,",");
-	int number=0;
-	while(t!=NULL && number<16){
-		array[number]=(int)t;
-		number++;
-		t=strtok(NULL,",");
-	}
-}

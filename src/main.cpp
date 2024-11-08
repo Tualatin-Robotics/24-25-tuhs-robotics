@@ -1,15 +1,15 @@
 //Change team here:
-#define C_TEAM;
+#define C_TEAM
 
-#ifdef A_TEAM;
+#ifdef A_TEAM
 #include "a_team.h"
 #endif
 
-#ifdef B_TEAM;
+#ifdef B_TEAM
 #include "b_team.h"
 #endif
 
-#ifdef C_TEAM;
+#ifdef C_TEAM
 #include "c_team.h"
 #endif
 
