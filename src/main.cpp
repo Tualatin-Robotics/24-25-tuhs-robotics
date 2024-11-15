@@ -28,12 +28,11 @@ void autonomous() {
 }
 
 void opcontrol() {
-	fstream theFile;
-	theFile.open(fileName,std::ios_base::app);
+	theFile.open(fileName,std::ios_base::app);//theFile is declared in replay.h
 
 	while (true) {
 		drive(master);
-		//logInputs(master,theFile);//issue here
+		logInputs(master,theFile);
 		pros::delay(20);
 	}
 	theFile.close();

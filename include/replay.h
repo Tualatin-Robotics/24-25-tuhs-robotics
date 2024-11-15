@@ -2,7 +2,9 @@
 #include <cstring>
 using namespace std;
 
-void logInputs(pros::Controller master,fstream theFile){//fstream as file argument, maybe there's a workaround?
+fstream theFile;//declared it up here instead. Will this work? Find out on Monday...
+
+void logInputs(pros::Controller master,fstream &theFile){
 	theFile<<
 		master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_X)<<","<<
 		master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y)<<","<<
@@ -22,7 +24,7 @@ void logInputs(pros::Controller master,fstream theFile){//fstream as file argume
 		master.get_digital(pros::E_CONTROLLER_DIGITAL_A)<<",\n";
 }
 
-void parseInputs(fstream theFile,int array[16],int lineNumber){//another fstream as file argument
+void parseInputs(fstream &theFile,int array[16],int lineNumber){
 	char line[64];//a line can't be longer than 50, but just to be safe, I used a power of 2
 	theFile.get(line,64);
 	char* t=strtok(line,",");
@@ -37,7 +39,6 @@ class ReplayController{
 	int buttons[16];
 	int frame=0;
 	string fileName;
-	//fstream theFile;//C++ also doesn't like this
 	public:
 	int32_t get_analog(int stick){
 		switch(stick){
@@ -66,15 +67,11 @@ class ReplayController{
 		}
 	}
 	void updateFrame(){
-		//parseInputs(theFile,buttons,frame);//issue here
+		parseInputs(theFile,buttons,frame);
 		frame++;
 	}
 	ReplayController(string a){
 		fileName=a;
-		fstream theFile;
 		theFile.open(fileName,std::ios_base::in);
-		//ifstream theFile(a);
 	}
 };
-
-//the main issue with the entire construct is that C++ does not like fstream/ifstream/ofstream/filebuf as function arguments
