@@ -13,20 +13,27 @@
 #include "c_team.h"
 #endif
 
-//int team = TEAM_C;
+pros::Controller master(pros::E_CONTROLLER_MASTER);
+ReplayController replay(fileName);//each team file will have to declare string fileName, providing a path to the appropriate file for the bot
 
 void initialize() {
-	
+	//init();
 }
 
 void autonomous() {
-	auton();
+	while(true){
+		drive(replay);
+		pros::delay(20);
+	}
 }
 
 void opcontrol() {
-	while (true) {
-		drive();
+	theFile.open(fileName,std::ios_base::app);//theFile is declared in replay.h
 
+	while (true) {
+		drive(master);
+		logInputs(master,theFile);
 		pros::delay(20);
 	}
+	theFile.close();
 }

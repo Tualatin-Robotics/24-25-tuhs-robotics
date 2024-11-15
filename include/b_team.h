@@ -1,18 +1,19 @@
 #include "main.h"
 #include "variables.h"
-
-pros::Controller master(pros::E_CONTROLLER_MASTER);
+#include "replay.h"
 
 pros::Motor left_front(2);
 pros::Motor right_front(1);
 pros::Motor left_back(4);
 pros::Motor right_back(3);
 
+string fileName="/usd/b_team_auton_file.txt";
+
 void auton() {
 
 }
 
-void drive() {
+void drive(auto master) {
 	int left = master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
 	int right = master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
 
