@@ -1,32 +1,40 @@
 //Change team here:
-#define C_TEAM;
+#define C_TEAM
 
-#ifdef A_TEAM;
+#ifdef A_TEAM
 #include "a_team.h"
 #endif
 
-#ifdef B_TEAM;
+#ifdef B_TEAM
 #include "b_team.h"
 #endif
 
-#ifdef C_TEAM;
+#ifdef C_TEAM
 #include "c_team.h"
 #endif
 
-//int team = TEAM_C;
+pros::Controller master(pros::E_CONTROLLER_MASTER);
+ReplayController replay(fileName);//each team file will have to declare string fileName, providing a path to the appropriate file for the bot
 
 void initialize() {
-	
+	//init();
 }
 
 void autonomous() {
-	auton();
+	while(true){
+		drive(replay);
+		pros::delay(20);
+	}
 }
 
 void opcontrol() {
-	while (true) {
-		drive();
+	fstream theFile;
+	theFile.open(fileName,std::ios_base::app);
 
+	while (true) {
+		drive(master);
+		//logInputs(master,theFile);//issue here
 		pros::delay(20);
 	}
+	theFile.close();
 }
