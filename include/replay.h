@@ -24,7 +24,8 @@ void logInputs(pros::Controller master,fstream &theFile){
 		master.get_digital(pros::E_CONTROLLER_DIGITAL_A)<<",\n";
 }
 
-void parseInputs(fstream &theFile,int array[16],int lineNumber){
+int* parseInputs(fstream &theFile,int lineNumber){
+	int array[16];
 	char line[64];//a line can't be longer than 50, but just to be safe, I used a power of 2
 	theFile.get(line,64);
 	char* t=strtok(line,",");
@@ -32,6 +33,7 @@ void parseInputs(fstream &theFile,int array[16],int lineNumber){
 		if(t!=NULL)array[n]=(int)t;
 		t=strtok(NULL,",");
 	}
+	return array;
 }
 
 class ReplayController{
@@ -67,11 +69,26 @@ class ReplayController{
 		}
 	}
 	void updateFrame(){
-		parseInputs(theFile,buttons,frame);
+		char temp;//if this doesn't work, I have a backup plan
+		theFile>>buttons[0]>>temp>>buttons[1]>>temp>>buttons[2]>>temp>>buttons[3]>>temp>>buttons[4]>>temp>>buttons[5]>>temp>>buttons[6]>>temp>>buttons[7]>>temp>>buttons[8]>>temp>>buttons[9]>>temp>>buttons[10]>>temp>>buttons[11]>>temp>>buttons[12]>>temp>>buttons[13]>>temp>>buttons[14]>>temp>>buttons[15>>temp];
+		//for(int i=0;i<16;i++) getNextValue(i);
 		frame++;
+	}
+	void getNextValue(int i,int j=0,char* num[4]){//this method recursively calls itself until the file pointer hits a comma, then converts the C-style string into an int
+		char *c;
+		theFile>>c;
+		if(!num) char* num[4];
+		if(c==","||j>=3){//3 is the highest index in num[4] so there is no point in risking a missing base case and causing at least two different errors
+			buttons[i]=(int)(*num);
+		}
+		else{
+			*num[j]=*c;
+			getNextValue(i,j+1,num);
+		}
 	}
 	ReplayController(string a){
 		fileName=a;
 		theFile.open(fileName,std::ios_base::in);
 	}
+	
 };

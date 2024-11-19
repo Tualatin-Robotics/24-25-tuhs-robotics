@@ -1,5 +1,5 @@
 //Change team here:
-#define C_TEAM
+#define B_TEAM
 
 #ifdef A_TEAM
 #include "a_team.h"
@@ -23,6 +23,7 @@ void initialize() {
 void autonomous() {
 	while(true){
 		drive(replay);
+		replay.updateFrame();
 		pros::delay(20);
 	}
 }
