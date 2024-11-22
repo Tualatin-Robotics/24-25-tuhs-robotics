@@ -1,3 +1,6 @@
+#include <fstream>
+#include <cstring>
+using namespace std;
 #include "main.h"
 #include "variables.h"
 #include "replay.h"
@@ -20,5 +23,3 @@ void drive(auto master){
 	left_front.move_voltage(leftY * MOVE_VOLT);
 	right_front.move_voltage(rightY * -MOVE_VOLT);
 }
-
-
