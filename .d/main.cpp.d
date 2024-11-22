@@ -18,7 +18,7 @@ bin/main.cpp.o: src/main.cpp include/c_team.h include/main.h \
  include/pros/motors.hpp include/pros/optical.hpp include/pros/optical.h \
  include/pros/rotation.hpp include/pros/rotation.h include/pros/rtos.hpp \
  include/pros/screen.hpp include/pros/screen.h include/pros/vision.hpp \
- include/pros/vision.h include/variables.h
+ include/pros/vision.h include/variables.h include/replay.h
 include/c_team.h:
 include/main.h:
 include/api.h:
@@ -78,3 +78,4 @@ include/pros/screen.h:
 include/pros/vision.hpp:
 include/pros/vision.h:
 include/variables.h:
+include/replay.h:
