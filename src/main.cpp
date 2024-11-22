@@ -1,5 +1,5 @@
 //Change team here:
-#define B_TEAM
+#define C_TEAM
 
 #ifdef A_TEAM
 #include "a_team.h"
@@ -29,11 +29,11 @@ void autonomous() {
 }
 
 void opcontrol() {
-	theFile.open(fileName,std::ios_base::app);//theFile is declared in replay.h
+	//theFile.open(newFile(fileName),std::ios_base::trunc);//theFile is declared in replay.h
 
 	while (true) {
 		drive(master);
-		logInputs(master,theFile);
+		logInputs(master,theFile);//remember to comment this line out when actually driving
 		pros::delay(20);
 	}
 	theFile.close();

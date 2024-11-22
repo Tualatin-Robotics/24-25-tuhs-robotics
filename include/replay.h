@@ -69,12 +69,13 @@ class ReplayController{
 		}
 	}
 	void updateFrame(){
-		char temp;//if this doesn't work, I have a backup plan
+		char temp;//if this doesn't work, I have a backup plan...
 		theFile>>buttons[0]>>temp>>buttons[1]>>temp>>buttons[2]>>temp>>buttons[3]>>temp>>buttons[4]>>temp>>buttons[5]>>temp>>buttons[6]>>temp>>buttons[7]>>temp>>buttons[8]>>temp>>buttons[9]>>temp>>buttons[10]>>temp>>buttons[11]>>temp>>buttons[12]>>temp>>buttons[13]>>temp>>buttons[14]>>temp>>buttons[15>>temp];
-		//for(int i=0;i<16;i++) getNextValue(i);
+		char*num[4];
+		//for(int i=0;i<16;i++) getNextValue(i,0,num);
 		frame++;
 	}
-	void getNextValue(int i,int j=0,char* num[4]){//this method recursively calls itself until the file pointer hits a comma, then converts the C-style string into an int
+	void getNextValue(int i,int j,char* num[4]){//this method recursively calls itself until the file pointer hits a comma, then converts the C-style string into an int
 		char *c;
 		theFile>>c;
 		if(!num) char* num[4];
@@ -92,3 +93,20 @@ class ReplayController{
 	}
 	
 };
+
+inline bool fileExists(string&name){
+	ifstream f(name.c_str());
+	return f.good();
+}
+
+string newFile(string name){
+	int i=0;
+	char g[]={(char)i};
+	string v=name+(string)g;
+	while(fileExists(v)){
+		i+=1;
+		g[0]=(char)i;
+		v=name+(string)g;
+	}
+	return v;
+}
