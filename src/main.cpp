@@ -23,7 +23,7 @@ void initialize() {
 void autonomous() {
 	while(true){
 		drive(replay);
-		replay.updateFrame();
+		replay.updateFrame();//I believe you forgot to call this method when you were testing, see if it works now
 		pros::delay(20);
 	}
 }
