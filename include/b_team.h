@@ -7,7 +7,7 @@ pros::Motor right_front(1);
 pros::Motor left_back(4);
 pros::Motor right_back(3);
 
-string fileName="/usd/b_team_auton_file.txt";
+string fileName="/usd/b_team_auton_file";//the program will automatically append ".txt"
 
 void auton() {
 

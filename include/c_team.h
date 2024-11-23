@@ -10,7 +10,7 @@ pros::Motor right_front(20);
 pros::Motor left_back(18);
 pros::Motor right_back(17);
 
-string fileName="/usd/c_team_auton_file.txt";//change this to a file on the SD card
+string fileName="/usd/c_team_auton_file";//the program will automatically append ".txt"
 
 void init(){
 
