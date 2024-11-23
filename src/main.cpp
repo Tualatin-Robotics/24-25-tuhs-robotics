@@ -1,5 +1,5 @@
 //Change team here:
-#define C_TEAM
+#define A_TEAM
 
 #ifdef A_TEAM
 #include "a_team.h"
@@ -14,7 +14,7 @@
 #endif
 
 pros::Controller master(pros::E_CONTROLLER_MASTER);
-ReplayController replay(fileName);//each team file will have to declare string fileName, providing a path to the appropriate file for the bot
+ReplayController replay(fileName+".txt");//each team file will have to declare string fileName, providing a path to the appropriate file for the bot
 
 void initialize() {
 	//init();
@@ -23,7 +23,7 @@ void initialize() {
 void autonomous() {
 	while(true){
 		drive(replay);
-		replay.updateFrame();
+		replay.updateFrame();//I believe you forgot to call this method when you were testing, see if it works now
 		pros::delay(20);
 	}
 }

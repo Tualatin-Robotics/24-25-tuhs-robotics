@@ -5,33 +5,25 @@ using namespace std;
 fstream theFile;//declared it up here instead. Will this work? Find out on Monday...
 
 void logInputs(pros::Controller master,fstream &theFile){
-	theFile<<master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_X);
-	theFile<<" , ";
-		// master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y)<<","<<
-		// master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X)<<","<<
-		// master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y)<<","<<
-		// master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)<<","<<
-		// master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)<<","<<
-		// master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)<<","<<
-		// master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)<<","<<
-		// master.get_digital(pros::E_CONTROLLER_DIGITAL_UP)<<","<<
-		// master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)<<","<<
-		// master.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT)<<","<<
-		// master.get_digital(pros::E_CONTROLLER_DIGITAL_RIGHT)<<","<<
-		// master.get_digital(pros::E_CONTROLLER_DIGITAL_X)<<","<<
-		// master.get_digital(pros::E_CONTROLLER_DIGITAL_B)<<","<<
-		// master.get_digital(pros::E_CONTROLLER_DIGITAL_Y)<<","<<
-		// master.get_digital(pros::E_CONTROLLER_DIGITAL_A)<<",\n";
+	//theFile<<master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_X);
+	theFile<<master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y)<<" , "<<
+		master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X)<<" , "<<
+		master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y)<<" , "<<
+		master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)<<" , "<<
+		master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)<<"  "<<
+		master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)<<" , "<<
+		master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)<<" , "<<
+		master.get_digital(pros::E_CONTROLLER_DIGITAL_UP)<<" , "<<
+		master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)<<" , "<<
+		master.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT)<<" , "<<
+		master.get_digital(pros::E_CONTROLLER_DIGITAL_RIGHT)<<" , "<<
+		master.get_digital(pros::E_CONTROLLER_DIGITAL_X)<<" , "<<
+		master.get_digital(pros::E_CONTROLLER_DIGITAL_B)<<" , "<<
+		master.get_digital(pros::E_CONTROLLER_DIGITAL_Y)<<" , "<<
+		master.get_digital(pros::E_CONTROLLER_DIGITAL_A)<<" ,\n";
 }
 
-int parseInputs(fstream &theFile,int lineNumber){
-	int rightY;
-	theFile >> rightY;
-	char comma;
-	theFile >> comma;
-	return 127;
-	// return rightY;
-}
+
 
 class ReplayController{
 	int buttons[16];
@@ -69,9 +61,15 @@ class ReplayController{
 		}
 	}
 	void updateFrame(){
-		int x = parseInputs(theFile,frame);
-		analog_right_y = x;
+		parseInputs(theFile,frame);
 		frame++;
+	}
+	void parseInputs(fstream &theFile,int lineNumber){
+		for(int i=0;i<16;i++){
+			theFile>>buttons[i];
+			char comma;
+			theFile>>comma;
+		}
 	}
 	ReplayController(string a){
 		fileName=a;
