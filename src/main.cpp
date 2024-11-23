@@ -1,5 +1,5 @@
 //Change team here:
-#define C_TEAM
+#define A_TEAM
 
 #ifdef A_TEAM
 #include "a_team.h"
@@ -16,23 +16,28 @@
 pros::Controller master(pros::E_CONTROLLER_MASTER);
 ReplayController replay(fileName);//each team file will have to declare string fileName, providing a path to the appropriate file for the bot
 
+
 void initialize() {
-	//init();
+	init();
 }
 
 void autonomous() {
-	while(true){
+	//open_auton_file(fileName, false);
+	theFile.open(fileName,std::ios_base::in);
+	while(true) {
+		replay.updateFrame();
 		drive(replay);
 		pros::delay(20);
 	}
+	theFile.close();
 }
 
 void opcontrol() {
-	theFile.open(fileName,std::ios_base::app);//theFile is declared in replay.h
-
 	while (true) {
 		drive(master);
-		logInputs(master,theFile);
+		if (is_recording_auton) {
+			logInputs(master, theFile);
+		}
 		pros::delay(20);
 	}
 	theFile.close();
