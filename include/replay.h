@@ -106,7 +106,7 @@ string newFile(string name){
 	while(fileExists(v)){
 		i+=1;
 		g[0]=(char)i;
-		v=name+(string)g;
+		v=name+'_'+(string)g+".txt";
 	}
 	return v;
 }
