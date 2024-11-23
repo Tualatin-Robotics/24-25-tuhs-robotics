@@ -23,16 +23,17 @@ void initialize() {
 void autonomous() {
 	while(true){
 		drive(replay);
+		replay.updateFrame();
 		pros::delay(20);
 	}
 }
 
 void opcontrol() {
-	theFile.open(fileName,std::ios_base::app);//theFile is declared in replay.h
+	//theFile.open(newFile(fileName),std::ios_base::trunc);//theFile is declared in replay.h
 
 	while (true) {
 		drive(master);
-		logInputs(master,theFile);
+		logInputs(master,theFile);//remember to comment this line out when actually driving
 		pros::delay(20);
 	}
 	theFile.close();

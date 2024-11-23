@@ -77,4 +77,22 @@ class ReplayController{
 		fileName=a;
 		theFile.open(fileName,std::ios_base::in);
 	}
+	
 };
+
+inline bool fileExists(string&name){
+	ifstream f(name.c_str());
+	return f.good();
+}
+
+string newFile(string name){
+	int i=0;
+	char g[]={(char)i};
+	string v=name+(string)g;
+	while(fileExists(v)){
+		i+=1;
+		g[0]=(char)i;
+		v=name+(string)g;
+	}
+	return v;
+}
