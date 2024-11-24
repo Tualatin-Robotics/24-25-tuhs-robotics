@@ -1,7 +1,9 @@
+#include <fstream>
+#include <cstring>
+using namespace std;
 #include "main.h"
 #include "variables.h"
-
-pros::Controller master(pros::E_CONTROLLER_MASTER);
+#include "replay.h"
 
 pros::Motor left_front(19);
 pros::Motor right_front(20);
@@ -10,29 +12,16 @@ pros::Motor right_back(17);
 
 void init() {}
 
-void auton() {
-	left_front.move_voltage(127.0 * MOVE_VOLT);
-	right_front.move_voltage(127.0 * -MOVE_VOLT);
+string fileName="/usd/test3.txt";//change this to a file on the SD card
 
-	pros::delay(2000);
+void init(){
 
-	left_front.move_voltage(0);
-	right_front.move_voltage(0);
-
-	pros::delay(2000);
-
-	left_front.move_voltage(127.0 * MOVE_VOLT);
-
-	pros::delay(500);
-
-	left_front.move_voltage(0);
 }
 
-void drive() {
-	int left = master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
-	int right = master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
-	bool b = master.get_digital(pros::E_CONTROLLER_DIGITAL_B);
+void drive(auto master){
+	int leftY=master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+	int rightY=master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
 
-	left_front.move_voltage(left * MOVE_VOLT * 0.5 *!b);
-	right_front.move_voltage(right * -MOVE_VOLT * 0.5*!b);
+	left_front.move_voltage(leftY * MOVE_VOLT);
+	right_front.move_voltage(rightY * -MOVE_VOLT);
 }

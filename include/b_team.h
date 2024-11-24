@@ -1,7 +1,6 @@
 #include "main.h"
 #include "variables.h"
-
-pros::Controller master(pros::E_CONTROLLER_MASTER);
+#include "replay.h"
 
 pros::Motor left_front(19);
 pros::Motor right_front(20);
@@ -14,11 +13,13 @@ void init() {
 	arm.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 }
 
+string fileName="/usd/b_team_auton_file.txt";
+
 void auton() {
 
 }
 
-void drive() {
+void drive(auto master) {
 	int left = master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
 	int right = master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
 
