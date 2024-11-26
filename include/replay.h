@@ -4,7 +4,7 @@
 #include <cstdio>
 using namespace std;
 
-fstream theFile;//declared it up here instead. Will this work? Find out on Monday...
+fstream theFile;
 
 void logInputs(pros::Controller master,fstream &theFile){
 	theFile<<master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_X) << " , " <<
@@ -27,7 +27,6 @@ void logInputs(pros::Controller master,fstream &theFile){
 
 void open_auton_file(string fileName, bool overwrite) {
 	if (overwrite) {
-		//std::filesystem::remove(fileName);
 		remove("/usd/a_team_auton_file.txt");
 	}
 	theFile.open(fileName,std::ios_base::in);
@@ -38,6 +37,8 @@ class ReplayController{
 	int buttons[16];
 	int frame=0;
 	string fileName;
+
+	bool is_recording_auton;
 	
 	int32_t get_analog(int stick){
 		switch(stick){
@@ -67,42 +68,27 @@ class ReplayController{
 	}
 	void updateFrame(){
 		char comma;
-		theFile >> buttons[0];
-		theFile >> comma;
-		theFile >> buttons[1];
-		theFile >> comma;
-		theFile >> buttons[2];
-		theFile >> comma;
-		theFile >> buttons[3];
-		theFile >> comma;
-		theFile >> buttons[4];
-		theFile >> comma;
-		theFile >> buttons[5];
-		theFile >> comma;
-		theFile >> buttons[6];
-		theFile >> comma;
-		theFile >> buttons[7];
-		theFile >> comma;
-		theFile >> buttons[8];
-		theFile >> comma;
-		theFile >> buttons[9];
-		theFile >> comma;
-		theFile >> buttons[10];
-		theFile >> comma;
-		theFile >> buttons[11];
-		theFile >> comma;
-		theFile >> buttons[12];
-		theFile >> comma;
-		theFile >> buttons[13];
-		theFile >> comma;
-		theFile >> buttons[14];
-		theFile >> comma;
-		theFile >> buttons[15];
-		theFile >> comma;
+		for(int i=0;i<16;i++){
+			theFile >> buttons[i];
+			theFile >> comma;
+		}
 		frame++;
+	}
+	void record(pros::Controller master,fstream &theFile){
+		if(is_recording_auton){
+			logInputs(master,theFile);
+		}
+		else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)
+			&& master.get_digital(pros::E_CONTROLLER_DIGITAL_RIGHT)
+			&& master.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT)
+			&& master.get_digital(pros::E_CONTROLLER_DIGITAL_UP)) {
+			pros::delay(1000);
+			theFile.open(fileName,std::ios_base::out);
+			cout << "Recording!";
+			is_recording_auton = true;
+		}
 	}
 	ReplayController(string a){
 		fileName=a;
-		//theFile.open(fileName,std::ios_base::in);
 	}
 };

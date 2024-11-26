@@ -1,6 +1,3 @@
-#include <fstream>
-#include <cstring>
-using namespace std;
 #include "main.h"
 #include "variables.h"
 #include "replay.h"
@@ -10,9 +7,7 @@ pros::Motor right_front(20);
 pros::Motor left_back(18);
 pros::Motor right_back(17);
 
-void init() {}
-
-string fileName="/usd/test3.txt";//change this to a file on the SD card
+string fileName="/usd/c_team_auton_file.txt";//change this to a file on the SD card
 
 void init(){
 

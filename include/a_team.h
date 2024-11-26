@@ -17,8 +17,6 @@ bool pneum = false;
 bool prevDrivingDirectionButton = false;
 bool prevPneumButton = false;
 
-bool is_recording_auton = false;
-
 string fileName="/usd/a_team_auton_file.txt";
 
 void init() {
@@ -30,20 +28,6 @@ void auton() {
 }
 
 void drive(auto master) {
-	if (master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)
-	&& master.get_digital(pros::E_CONTROLLER_DIGITAL_RIGHT)
-	&& master.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT)
-	&& master.get_digital(pros::E_CONTROLLER_DIGITAL_UP)) {
-	//if (master.get_digital(pros::E_CONTROLLER_DIGITAL_X)) {
-		pros::delay(1000);
-		is_recording_auton = true;
-		//remove("/usd/a_team_auton_file.txt");
-		theFile.open(fileName,std::ios_base::out);
-		cout << "Recording!";
-		//open_auton_file(fileName, true);
-	}
-
-
 	if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
 		if (!prevDrivingDirectionButton) {
 			drivingDirection = !drivingDirection;
