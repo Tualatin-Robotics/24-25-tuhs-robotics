@@ -13,6 +13,9 @@
 #include "c_team.h"
 #endif
 
+#include "stdlib.h"
+#include "screen_image.h"
+
 pros::Controller master(pros::E_CONTROLLER_MASTER);
 ReplayController replay(fileName);//each team file will have to declare string fileName, providing a path to the appropriate file for the bot
 
@@ -31,6 +34,7 @@ void autonomous() {
 }
 
 void opcontrol() {
+	register_card();
 	while (true) {
 		drive(master);
 		replay.record(master,theFile);//calls a method from ReplayController (in replay.h) to record the file input
