@@ -17,6 +17,8 @@ void drive(auto master){
 	int leftY=master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
 	int rightY=master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
 
+	left_back.move_voltage(leftY * MOVE_VOLT);
+	right_back.move_voltage(rightY * -MOVE_VOLT);
 	left_front.move_voltage(leftY * MOVE_VOLT);
 	right_front.move_voltage(rightY * -MOVE_VOLT);
 }

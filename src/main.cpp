@@ -23,7 +23,7 @@ void initialize() {
 void autonomous() {
 	theFile.open(fileName,std::ios_base::in);
 	while(true) {
-		replay.updateFrame();
+		replay.updateFrame(true);//set argument to false if you want the bot to execute the replay to execute exactly as it was recorded
 		drive(replay);
 		pros::delay(20);
 	}
