@@ -1,5 +1,4 @@
-#include "display/lvgl.h"
-#include "pros/screen.h"
+
 #include "ff/ff.h" // Include FatFS header for SD card handling
 
 // File system callbacks
