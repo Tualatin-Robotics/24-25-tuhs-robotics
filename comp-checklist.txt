@@ -1,0 +1,12 @@
+PROGRAMMER CHECKLIST FOR ALL COMPETITIONS
+
+NECESSARY ITEMS
+  USB upload cables (2-4)
+  A laptop (1-2)
+  SD cards (1-2)
+  SD card adapters (1-2)
+  Code bot
+
+OPTIONAL ITEMS
+  Extra ethernet cables (1-2)
+  Extension cord
