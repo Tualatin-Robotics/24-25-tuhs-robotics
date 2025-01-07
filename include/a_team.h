@@ -8,6 +8,7 @@ pros::Motor left_front(12);
 pros::Motor right_front(11);
 pros::Motor left_back(14);
 pros::Motor right_back(13);
+pros::Motor roller(19);
 
 pros::adi::DigitalOut piston (DIGITAL_SENSOR_PORT);
 
@@ -54,5 +55,14 @@ void drive(auto master) {
 		prevPneumButton = true;
 	} else {
 		prevPneumButton = false;
+	}
+
+	if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
+		//Roller's motor is half-sized, so it gets half the voltage
+		roller.move_voltage(MOVE_VOLT * 0.5 * 127.0);
+	}
+	if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
+		//Roller's motor is half-sized, so it gets half the voltage
+		roller.move_voltage(-MOVE_VOLT * 0.5 * 127.0);
 	}
 }
