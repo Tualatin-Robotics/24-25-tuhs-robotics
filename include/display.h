@@ -1,13 +1,12 @@
 //can draw things on the screen!!!
 
-void drawScreenImage(){
+void drawScreenImage(string image){
     int scr_width = 480;
 	int scr_height = 272;
 
 
-	//IMG FILE MUST BE NAMED "img.ppm"
 	fstream img_file;
-	img_file.open("/usd/img.ppm", std::ios_base::in);
+	img_file.open(image, std::ios_base::in);
 
 	img_file.get();
 	img_file.get();

@@ -21,7 +21,7 @@ ReplayController replay(fileName);//each team file will have to declare string f
 void initialize() {
 	init();
 	
-	drawScreenImage();
+	drawScreenImage(imageName);
 
 	
 }
