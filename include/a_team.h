@@ -24,9 +24,16 @@ bool pneum = false;
 bool prevDrivingDirectionButton = false;
 bool prevPneumButton = false;
 
+bool lift_on = false;
+bool lift_reverse = false;
+bool prev_lift_state = false;
+bool roller_on = false;
+bool roller_reverse = false;
+bool prev_roller_state = false;
+
 //1.0 is full speed
-float lift_speed_mult = 0.95;
-float roller_speed_mult = 0.95;
+float lift_speed_mult = 0.98;
+float roller_speed_mult = 0.98;
 
 string fileName="/usd/a_team_auton_file.txt";
 
@@ -75,19 +82,44 @@ void drive(auto master) {
 	lift.move_voltage(0);
 
 	if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
+		if (!prev_roller_state) {
+			roller_on = !roller_on;
+		}
+		prev_roller_state = true;
+	} else {
+		prev_roller_state = false;
+	}
+
+	if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
+		if (!prev_lift_state) {
+			lift_on = !lift_on;
+		}
+		prev_lift_state = true;
+	} else {
+		prev_lift_state = false;
+	}
+
+	if (roller_on && !roller_reverse) {
 		//Roller's motor is half-sized, so it gets half the voltage
 		roller.move_voltage(MOVE_VOLT * 0.5 * 127.0 * roller_speed_mult);
 	}
 	if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
 		//Roller's motor is half-sized, so it gets half the voltage
 		roller.move_voltage(-MOVE_VOLT * 0.5 * 127.0 * roller_speed_mult);
+		roller_reverse = true;
+	} else {
+		roller_reverse = false;
 	}
-	if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
+
+	if (lift_on && !lift_reverse) {
 		//Lift's motor is half-sized, so it gets half the voltage
 		lift.move_voltage(-MOVE_VOLT * 0.5 * 127.0 * lift_speed_mult);
 	}
 	if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
 		//Lift's motor is half-sized, so it gets half the voltage
 		lift.move_voltage(MOVE_VOLT * 0.5 * 127.0 * lift_speed_mult);
+		lift_reverse = true;
+	} else {
+		lift_reverse = false;
 	}
 }
