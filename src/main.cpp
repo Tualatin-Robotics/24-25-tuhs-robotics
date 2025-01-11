@@ -1,5 +1,5 @@
 //Change team here:
-#define B_TEAM
+#define A_TEAM
 
 #ifdef A_TEAM
 #include "a_team.h"
