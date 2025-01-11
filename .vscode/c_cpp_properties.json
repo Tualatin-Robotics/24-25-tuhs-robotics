@@ -6,24 +6,28 @@
         "${workspaceFolder}/**",
         "c:\\Users\\Robotics\\Documents\\GitHub\\24-25-tuhs-robotics\\include",
         "/home/kol/Documents/Vex Robotics/transfer/24-25-tuhs-robotics/include",
-        "c:\\Users\\silas\\SSTUFF\\Program Documents\\Godot\\24-25-tuhs-robotics\\include"
+        "c:\\Users\\silas\\SSTUFF\\Program Documents\\Godot\\24-25-tuhs-robotics\\include",
+        "/Users/benjamin/Documents/GitHub/24-25-tuhs-robotics/include"
       ],
       "defines": [
         "_DEBUG",
         "UNICODE",
         "_UNICODE"
       ],
-      "compilerPath": "c:\\Users\\silas\\AppData\\Roaming\\Code\\User\\globalStorage\\sigbots.pros\\install\\pros-toolchain-windows\\usr\\bin\\arm-none-eabi-g++",
+      "compilerPath": "/Users/benjamin/Library/Application Support/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-macos/bin/arm-none-eabi-g++",
       "cStandard": "gnu11",
       "cppStandard": "gnu++20",
       "intelliSenseMode": "gcc-arm",
       "browse": {
         "path": [
-          "c:\\Users\\silas\\SSTUFF\\Program Documents\\Godot\\24-25-tuhs-robotics"
+          "/Users/benjamin/Documents/GitHub/24-25-tuhs-robotics"
         ],
         "limitSymbolsToIncludedHeaders": true,
         "databaseFilename": ""
-      }
+      },
+      "macFrameworkPath": [
+        "/System/Library/Frameworks"
+      ]
     }
   ],
   "version": 4
