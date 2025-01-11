@@ -2,7 +2,9 @@
 #include "variables.h"
 #include "replay.h"
 
-#define DIGITAL_SENSOR_PORT 'A'
+#define DIGITAL_SENSOR_PORT_1 'G'
+#define DIGITAL_SENSOR_PORT_2 'H'
+
 
 pros::Motor left_front(18);
 pros::Motor right_front(1);
@@ -13,7 +15,8 @@ pros::Motor right_back(3);
 pros::Motor roller(11);
 pros::Motor lift(12);
 
-pros::adi::DigitalOut piston (DIGITAL_SENSOR_PORT);
+pros::adi::DigitalOut piston_1 (DIGITAL_SENSOR_PORT_1);
+pros::adi::DigitalOut piston_2 (DIGITAL_SENSOR_PORT_2);
 
 bool drivingDirection = false; // true makes it inverted
 bool pneum = false;
