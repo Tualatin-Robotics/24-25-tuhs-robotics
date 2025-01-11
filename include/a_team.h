@@ -4,12 +4,14 @@
 
 #define DIGITAL_SENSOR_PORT 'A'
 
-pros::Motor left_front(12);
+pros::Motor left_front(18);
 pros::Motor right_front(11);
-pros::Motor left_back(14);
+pros::Motor left_back(20);
+pros::Motor left_mid(19);
+pros::Motor right_mid(14);
 pros::Motor right_back(13);
-pros::Motor roller(19);
-pros::Motor lift(20);
+pros::Motor roller(?);
+pros::Motor lift(?);
 
 pros::adi::DigitalOut piston (DIGITAL_SENSOR_PORT);
 
@@ -45,7 +47,9 @@ void drive(auto master) {
 	left_front.move_voltage(((right * !drivingDirection) + (-left * drivingDirection)) * MOVE_VOLT);
 	right_front.move_voltage(((left * !drivingDirection) + (-right * drivingDirection)) * -MOVE_VOLT);
 	left_back.move_voltage(((right * !drivingDirection) + (-left * drivingDirection)) * MOVE_VOLT);
+	left_mid.move_voltage(((right * !drivingDirection) + (-left * drivingDirection)) * MOVE_VOLT);
 	right_back.move_voltage(((left * !drivingDirection) + (-right * drivingDirection)) * -MOVE_VOLT);
+	right_mid.move_voltage(((left * !drivingDirection) + (-right * drivingDirection)) * -MOVE_VOLT);
 
 	if (master.get_digital(pros::E_CONTROLLER_DIGITAL_A))
 	{
