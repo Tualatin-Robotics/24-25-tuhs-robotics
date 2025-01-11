@@ -5,13 +5,13 @@
 #define DIGITAL_SENSOR_PORT 'A'
 
 pros::Motor left_front(18);
-pros::Motor right_front(11);
+pros::Motor right_front(1);
 pros::Motor left_back(20);
 pros::Motor left_mid(19);
-pros::Motor right_mid(14);
-pros::Motor right_back(13);
-pros::Motor roller(?);
-pros::Motor lift(?);
+pros::Motor right_mid(2);
+pros::Motor right_back(3);
+pros::Motor roller(11);
+pros::Motor lift(12);
 
 pros::adi::DigitalOut piston (DIGITAL_SENSOR_PORT);
 
