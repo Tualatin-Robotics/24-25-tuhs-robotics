@@ -30,7 +30,7 @@ void auton() {
 }
 
 void drive(auto master) {
-	if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
+	if (master.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT)) {
 		if (!prevDrivingDirectionButton) {
 			drivingDirection = !drivingDirection;
 		}
@@ -47,7 +47,7 @@ void drive(auto master) {
 	left_back.move_voltage(((right * !drivingDirection) + (-left * drivingDirection)) * MOVE_VOLT);
 	right_back.move_voltage(((left * !drivingDirection) + (-right * drivingDirection)) * -MOVE_VOLT);
 
-	if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1))
+	if (master.get_digital(pros::E_CONTROLLER_DIGITAL_A))
 	{
 		if (!prevPneumButton) {
 			pneum = !pneum;
