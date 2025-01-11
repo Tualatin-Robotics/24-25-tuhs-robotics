@@ -39,11 +39,6 @@ class ReplayController{
 	bool donePlaying=false;
 	string fileName;
 
-	//delta variables
-	int delayTime=20;
-	int timeBetweenFrames=0;
-	int timestamp=0;
-
 	bool is_recording_auton=false;
 	
 	int32_t get_analog(int stick){
@@ -55,7 +50,6 @@ class ReplayController{
 			default: return 0;
 		}
 	}
-
 	int32_t get_digital(int button){
 		switch(button){
 			case pros::E_CONTROLLER_DIGITAL_L1: return buttons[4];
@@ -73,7 +67,6 @@ class ReplayController{
 			default: return 0;
 		}
 	}
-
 	void updateFrame(bool optimized=false){
 		char comma;
 		for(int i=0;i<16;i++){
@@ -82,6 +75,7 @@ class ReplayController{
 		}
 		frame++;
 		//recursively calls updateFrame() until it finds a line that isn't all 0's
+		//need to stop at the eof or else the base case will always be false (that is, the condition to continue to call updateFrame() will always be true)
 		if(!donePlaying && buttons[0]+buttons[1]+buttons[2]+buttons[3]+buttons[4]+buttons[5]+buttons[6]+buttons[7]+buttons[8]+buttons[9]+buttons[10]+buttons[11]+buttons[12]+buttons[13]+buttons[14]+buttons[15]<1024){
 			if(optimized && buttons[0]==0 && buttons[1]==0 && buttons[2]==0 && buttons[3]==0 && buttons[4]+buttons[5]+buttons[6]+buttons[7]+buttons[8]+buttons[9]+buttons[10]+buttons[11]+buttons[12]+buttons[13]+buttons[14]+buttons[15]==0){
 				updateFrame(true);
@@ -90,10 +84,10 @@ class ReplayController{
 		else{
 			donePlaying=false;
 			for(int i=0;i<16;++i) buttons[i]=0;
+			//buttons[0]=buttons[1]=buttons[2]=buttons[3]=buttons[4]=buttons[5]=buttons[6]=buttons[7]=buttons[8]=buttons[9]=buttons[10]=buttons[11]=buttons[12]=buttons[13]=buttons[14]=buttons[15]=0;
 		}
 		
 	}
-
 	void record(pros::Controller master,fstream &theFile){
 		if(is_recording_auton){
 			logInputs(master,theFile);
@@ -119,10 +113,7 @@ class ReplayController{
 				is_recording_auton = true;
 			}
 		}
-
-		//subtract timestamp from current Time, then add that to delayTime and divide delayTime by 2
 	}
-
 	ReplayController(string a){
 		fileName=a;
 	}
