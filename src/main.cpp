@@ -1,5 +1,5 @@
 //Change team here:
-#define A_TEAM
+#define C_TEAM
 
 #ifdef A_TEAM
 #include "a_team.h"
@@ -63,8 +63,6 @@ void initialize() {
 
 		pros::screen::draw_pixel(draw_x, draw_y);
 		pros::screen::draw_pixel(draw_x + 1, draw_y);
-		// pros::screen::draw_pixel(draw_x, draw_y + 1);
-		// pros::screen::draw_pixel(draw_x + 1, draw_y + 1);
 
 		draw_x += 2;
 
@@ -108,7 +106,7 @@ void opcontrol() {
 	while (true) {
 		drive(master);
 		replay.record(master,theFile);//calls a method from ReplayController (in replay.h) to record the file input
-		pros::delay(20);
+		pros::delay(21);
 	}
 	theFile.close();
 }
