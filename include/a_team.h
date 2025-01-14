@@ -36,6 +36,7 @@ float lift_speed_mult = 0.98;
 float roller_speed_mult = 0.98;
 
 string fileName="/usd/a_team_auton_file.txt";
+string imageName="/usd/img.ppm";
 
 void init() {
 	piston_1.set_value(false);

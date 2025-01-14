@@ -13,7 +13,8 @@ void init() {
 	arm.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 }
 
-string fileName = "/usd/b_team_auton_file.txt";
+string fileName = "/usd/b_team_auton_file.txt";//change this to an auton file path (.txt) on the SD card
+string imageName="/usd/img.ppm";//change this to an image file path (.ppm) on the SD card
 
 
 void auton() {

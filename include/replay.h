@@ -36,9 +36,10 @@ class ReplayController{
 	public:
 	int buttons[16];
 	int frame=0;
+	bool donePlaying=false;
 	string fileName;
 
-	bool is_recording_auton;
+	bool is_recording_auton=false;
 	
 	int32_t get_analog(int stick){
 		switch(stick){
@@ -66,26 +67,51 @@ class ReplayController{
 			default: return 0;
 		}
 	}
-	void updateFrame(){
+	void updateFrame(bool optimized=false){
 		char comma;
 		for(int i=0;i<16;i++){
 			theFile >> buttons[i];
 			theFile >> comma;
 		}
 		frame++;
+		//recursively calls updateFrame() until it finds a line that isn't all 0's
+		//need to stop at the eof or else the base case will always be false (that is, the condition to continue to call updateFrame() will always be true)
+		if(!donePlaying && buttons[0]+buttons[1]+buttons[2]+buttons[3]+buttons[4]+buttons[5]+buttons[6]+buttons[7]+buttons[8]+buttons[9]+buttons[10]+buttons[11]+buttons[12]+buttons[13]+buttons[14]+buttons[15]<1024){
+			if(optimized && buttons[0]==0 && buttons[1]==0 && buttons[2]==0 && buttons[3]==0 && buttons[4]+buttons[5]+buttons[6]+buttons[7]+buttons[8]+buttons[9]+buttons[10]+buttons[11]+buttons[12]+buttons[13]+buttons[14]+buttons[15]==0){
+				updateFrame(true);
+			}
+		}
+		else{
+			donePlaying=false;
+			for(int i=0;i<16;++i) buttons[i]=0;
+			//buttons[0]=buttons[1]=buttons[2]=buttons[3]=buttons[4]=buttons[5]=buttons[6]=buttons[7]=buttons[8]=buttons[9]=buttons[10]=buttons[11]=buttons[12]=buttons[13]=buttons[14]=buttons[15]=0;
+		}
+		
 	}
 	void record(pros::Controller master,fstream &theFile){
 		if(is_recording_auton){
 			logInputs(master,theFile);
+			if(master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)
+			&& master.get_digital(pros::E_CONTROLLER_DIGITAL_RIGHT)
+			&& master.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT)
+			&& master.get_digital(pros::E_CONTROLLER_DIGITAL_UP)){
+				theFile<<1024;//1024 is greater than the highest possible value of the sum of all the inputs
+				theFile.close();
+				cout<<"Recording Stopped!";
+				is_recording_auton=false;
+				pros::delay(1000);
+			}
 		}
 		else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)
 			&& master.get_digital(pros::E_CONTROLLER_DIGITAL_RIGHT)
 			&& master.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT)
 			&& master.get_digital(pros::E_CONTROLLER_DIGITAL_UP)) {
-			pros::delay(1000);
-			theFile.open(fileName,std::ios_base::out);
-			cout << "Recording!";
-			is_recording_auton = true;
+			if(!is_recording_auton){
+				pros::delay(1000);
+				theFile.open(fileName,std::ios_base::out);
+				cout << "Recording!";
+				is_recording_auton = true;
+			}
 		}
 	}
 	ReplayController(string a){
