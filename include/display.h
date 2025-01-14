@@ -44,33 +44,16 @@ void drawScreenImage(string image){
 
 		pros::screen::draw_pixel(draw_x, draw_y);
 		pros::screen::draw_pixel(draw_x + 1, draw_y);
-		// pros::screen::draw_pixel(draw_x, draw_y + 1);
-		// pros::screen::draw_pixel(draw_x + 1, draw_y + 1);
-
+		
 		draw_x += 2;
 
 		if (draw_x >= img_w + x) {
 			draw_y += 1;
 			draw_x = x;
-		}
-		
-		
-		// cout << green;
-		// cout << blue;
+		} 
 	}
-
-
-	// pros::screen::set_pen(RGB2COLOR(255, 255, 255));
-
-
-	// pros::screen::fill_rect(0, 0, x, 1000);
-
-	// pros::screen::fill_rect(x + (img_w / 2), 0, 1000, 1000);
-
-
-	
-	// pros::screen::print(pros::E_TEXT_MEDIUM, 50, 50, string(img_w));
-	// pros::screen::print(pros::E_TEXT_MEDIUM, 50, 100, static_cast<string>(img_h));
-
+		
+		
+		
 	img_file.close();
 }
