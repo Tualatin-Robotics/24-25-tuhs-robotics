@@ -1,5 +1,5 @@
 //Change team here:
-#define C_TEAM
+#define PROGRAMMER_TEAM
 
 #ifdef A_TEAM
 #include "a_team.h"
@@ -11,6 +11,10 @@
 
 #ifdef C_TEAM
 #include "c_team.h"
+#endif
+
+#ifdef PROGRAMMER_TEAM
+#include "code_bot.h"
 #endif
 
 #include "display.h"
@@ -29,7 +33,7 @@ void initialize() {
 void autonomous() {
 	theFile.open(fileName,std::ios_base::in);
 	while(true) {
-		replay.updateFrame(true);//set argument to false if you want the bot to execute the replay to execute exactly as it was recorded
+		replay.updateFrame(false);//set argument to false if you want the bot to execute the replay to execute exactly as it was recorded
 		drive(replay);
 		pros::delay(20);
 	}
@@ -40,7 +44,7 @@ void opcontrol() {
 	while (true) {
 		drive(master);
 		replay.record(master,theFile);//calls a method from ReplayController (in replay.h) to record the file input
-		pros::delay(21);
+		pros::delay(21);//it takes an extra millisecond to loop through 2^4 array entries?
 	}
 	theFile.close();
 }
