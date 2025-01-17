@@ -35,16 +35,19 @@ void autonomous() {
 	while(true) {
 		replay.updateFrame(false);//set argument to false if you want the bot to execute the replay to execute exactly as it was recorded
 		drive(replay);
-		pros::delay(20);
+		//pros::delay(21);
+		pros::delay(20-pros::millis()%20);
 	}
 	theFile.close();
 }
 
 void opcontrol() {
+	int frame=0;
 	while (true) {
 		drive(master);
 		replay.record(master,theFile);//calls a method from ReplayController (in replay.h) to record the file input
-		pros::delay(21);//it takes an extra millisecond to loop through 2^4 array entries?
+		//pros::delay(20);
+		pros::delay(20-pros::millis()%20);
 	}
 	theFile.close();
 }
