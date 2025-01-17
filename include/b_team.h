@@ -2,19 +2,19 @@
 #include "variables.h"
 #include "replay.h"
 
-pros::Motor left_front(19);
-pros::Motor right_front(20);
+pros::Motor left_front(20);
+pros::Motor right_front(19);
 pros::Motor left_back(18);
 pros::Motor right_back(17);
 
-pros::Motor arm(16);
+pros::Motor arm(10);
 
 void init() {
 	arm.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 }
 
 string fileName = "/usd/b_team_auton_file.txt";//change this to an auton file path (.txt) on the SD card
-string imageName="/usd/img.ppm";//change this to an image file path (.ppm) on the SD card
+string imageName = "/usd/img.ppm";//change this to an image file path (.ppm) on the SD card
 
 
 void auton() {
