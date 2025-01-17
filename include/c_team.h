@@ -22,4 +22,6 @@ void drive(auto master){
 	right_back.move_voltage(rightY * -MOVE_VOLT);
 	left_front.move_voltage(leftY * MOVE_VOLT);
 	right_front.move_voltage(rightY * -MOVE_VOLT);
+	left_back.move_voltage(leftY * MOVE_VOLT);
+	right_back.move_voltage(rightY * -MOVE_VOLT);
 }

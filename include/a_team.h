@@ -102,11 +102,11 @@ void drive(auto master) {
 
 	if (roller_on && !roller_reverse) {
 		//Roller's motor is half-sized, so it gets half the voltage
-		roller.move_voltage(MOVE_VOLT * 0.5 * 127.0 * roller_speed_mult);
+		roller.move_voltage(MOVE_VOLT * 0.6 * 127.0 * roller_speed_mult);
 	}
 	if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
 		//Roller's motor is half-sized, so it gets half the voltage
-		roller.move_voltage(-MOVE_VOLT * 0.5 * 127.0 * roller_speed_mult);
+		roller.move_voltage(-MOVE_VOLT * 0.6 * 127.0 * roller_speed_mult);
 		roller_reverse = true;
 	} else {
 		roller_reverse = false;
@@ -114,11 +114,11 @@ void drive(auto master) {
 
 	if (lift_on && !lift_reverse) {
 		//Lift's motor is half-sized, so it gets half the voltage
-		lift.move_voltage(-MOVE_VOLT * 0.5 * 127.0 * lift_speed_mult);
+		lift.move_voltage(-MOVE_VOLT * 0.75 * 127.0 * lift_speed_mult);
 	}
 	if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
 		//Lift's motor is half-sized, so it gets half the voltage
-		lift.move_voltage(MOVE_VOLT * 0.5 * 127.0 * lift_speed_mult);
+		lift.move_voltage(MOVE_VOLT * 0.75 * 127.0 * lift_speed_mult);
 		lift_reverse = true;
 	} else {
 		lift_reverse = false;

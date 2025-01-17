@@ -4,7 +4,6 @@ void drawScreenImage(string image){
     int scr_width = 480;
 	int scr_height = 272;
 
-
 	fstream img_file;
 	img_file.open(image, std::ios_base::in);
 
@@ -52,8 +51,6 @@ void drawScreenImage(string image){
 			draw_x = x;
 		} 
 	}
-		
-		
 		
 	img_file.close();
 }
