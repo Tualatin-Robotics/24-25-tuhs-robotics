@@ -1,5 +1,5 @@
 //Change team here:
-#define B_TEAM
+#define PROGRAMMER_TEAM
 
 #ifdef A_TEAM
 #include "a_team.h"
@@ -13,6 +13,10 @@
 #include "c_team.h"
 #endif
 
+#ifdef PROGRAMMER_TEAM
+#include "code_bot.h"
+#endif
+
 #include "display.h"
 
 pros::Controller master(pros::E_CONTROLLER_MASTER);
@@ -21,9 +25,7 @@ ReplayController replay(fileName);//each team file will have to declare string f
 void initialize() {
 	init();
 	
-	//drawScreenImage(imageName);
-
-	
+	drawScreenImage(imageName);
 }
 
 void autonomous() {

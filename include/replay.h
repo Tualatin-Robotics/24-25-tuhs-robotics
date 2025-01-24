@@ -68,14 +68,13 @@ class ReplayController{
 		}
 	}
 	void updateFrame(bool optimized=false){
+		frame++;
 		char comma;
 		for(int i=0;i<16;i++){
 			theFile >> buttons[i];
 			theFile >> comma;
 		}
-		frame++;
 		//recursively calls updateFrame() until it finds a line that isn't all 0's
-		//need to stop at the eof or else the base case will always be false (that is, the condition to continue to call updateFrame() will always be true)
 		if(!donePlaying && buttons[0]+buttons[1]+buttons[2]+buttons[3]+buttons[4]+buttons[5]+buttons[6]+buttons[7]+buttons[8]+buttons[9]+buttons[10]+buttons[11]+buttons[12]+buttons[13]+buttons[14]+buttons[15]<1024){
 			if(optimized && buttons[0]==0 && buttons[1]==0 && buttons[2]==0 && buttons[3]==0 && buttons[4]+buttons[5]+buttons[6]+buttons[7]+buttons[8]+buttons[9]+buttons[10]+buttons[11]+buttons[12]+buttons[13]+buttons[14]+buttons[15]==0){
 				updateFrame(true);
