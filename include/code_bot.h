@@ -7,7 +7,7 @@ pros::Motor right_front(20);
 pros::Motor left_back(18);
 pros::Motor right_back(17);
 
-string fileName="/usd/c_team_auton_file.txt";//change this to an auton file path (.txt) on the SD card
+string fileName="/usd/test_auton_file.txt";//change this to an auton file path (.txt) on the SD card
 string imageName="/usd/img.ppm";//change this to an image file path (.ppm) on the SD card
 
 void init(){
