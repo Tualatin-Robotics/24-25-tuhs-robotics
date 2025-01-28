@@ -13,10 +13,6 @@
 #include "c_team.h"
 #endif
 
-#ifdef code_bot
-#include "code_bot.h"
-#endif
-
 #include "display.h"
 
 pros::Controller master(pros::E_CONTROLLER_MASTER);
