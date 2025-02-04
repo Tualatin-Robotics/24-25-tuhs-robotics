@@ -1,5 +1,5 @@
 //Change team here:
-#define PROGRAMMER_TEAM
+#define B_TEAM
 
 #ifdef A_TEAM
 #include "a_team.h"
@@ -44,8 +44,8 @@ void opcontrol() {
 	while (true) {
 		drive(master);
 		replay.record(master,theFile);//calls a method from ReplayController (in replay.h) to record the file input
-		//pros::delay(20);
-		pros::delay(20-pros::millis()%20);
+		pros::delay(20);
+		//pros::delay(20-pros::millis()%20);
 	}
 	theFile.close();
 }
