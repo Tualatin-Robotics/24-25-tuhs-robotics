@@ -1,5 +1,5 @@
 //Change team here:
-#define PROGRAMMER_TEAM
+#define B_TEAM
 
 #ifdef A_TEAM
 #include "a_team.h"
@@ -25,7 +25,7 @@ ReplayController replay(fileName);//each team file will have to declare string f
 void initialize() {
 	init();
 	
-	drawScreenImage(imageName);
+	//drawScreenImage(imageName);
 }
 
 void autonomous() {
