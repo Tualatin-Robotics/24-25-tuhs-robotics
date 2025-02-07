@@ -39,7 +39,7 @@ void drive(auto master) {
 	int left_bump = master.get_digital(pros::E_CONTROLLER_DIGITAL_L1);
 	int right_bump = master.get_digital(pros::E_CONTROLLER_DIGITAL_R1);
 
-lift.move_voltage(1200*(triggle_up-triggle_down)); // was: lift.move_voltage(12000*(triggle_up-triggle_down))
+lift.move_voltage(8000*(triggle_up-triggle_down)); // was: lift.move_voltage(12000*(triggle_up-triggle_down))
 // new ------------------------------------------------------ 
 claw.move_voltage(1200*(up-down));
 
