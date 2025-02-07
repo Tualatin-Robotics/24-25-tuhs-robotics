@@ -6,7 +6,9 @@ pros::Motor left_front(20);
 pros::Motor right_front(19);
 pros::Motor left_back(18);
 pros::Motor right_back(17);
-pros::Motor lift(10); 
+pros::Motor lift(10);
+// new ------------------------------------------------------ 
+pros::Motor claw(15);
 
 void init() {
 	lift.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
@@ -23,8 +25,11 @@ void auton() {
 void drive(auto master) {
 	int left = master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
 	int right = master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
-int triggle_up = master.get_digital(pros::E_CONTROLLER_DIGITAL_L2);
-int triggle_down = master.get_digital(pros::E_CONTROLLER_DIGITAL_L1);;
+	int triggle_up = master.get_digital(pros::E_CONTROLLER_DIGITAL_L2);
+	int triggle_down = master.get_digital(pros::E_CONTROLLER_DIGITAL_L1);;
+// new ------------------------------------------------------ 
+	int up = master.get_digital(pros::E_CONTROLLER_DIGITAL_UP);
+	int down = master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN);
 
 	left_front.move_voltage(left * MOVE_VOLT);
 	right_front.move_voltage(right * -MOVE_VOLT);
@@ -34,6 +39,8 @@ int triggle_down = master.get_digital(pros::E_CONTROLLER_DIGITAL_L1);;
 	int left_bump = master.get_digital(pros::E_CONTROLLER_DIGITAL_L1);
 	int right_bump = master.get_digital(pros::E_CONTROLLER_DIGITAL_R1);
 
-lift.move_voltage(12000*(triggle_up-triggle_down)); 
+lift.move_voltage(1200*(triggle_up-triggle_down)); // was: lift.move_voltage(12000*(triggle_up-triggle_down))
+// new ------------------------------------------------------ 
+claw.move_voltage(1200*(up-down));
 
 }
