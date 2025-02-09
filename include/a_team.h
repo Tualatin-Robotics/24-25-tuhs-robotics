@@ -1,6 +1,10 @@
+// Paths to important files
 #include "main.h"
 #include "variables.h"
-#include "replay.h"
+
+// Vital information for A Team:
+string fileName="/usd/a_team_auton_file.txt";
+string imageName="/usd/img.ppm";
 
 #define DIGITAL_SENSOR_PORT_1 'G'
 #define DIGITAL_SENSOR_PORT_2 'H'
@@ -35,19 +39,29 @@ bool prev_roller_state = false;
 float lift_speed_mult = 0.98;
 float roller_speed_mult = 0.98;
 
-string fileName="/usd/a_team_auton_file.txt";
-string imageName="/usd/img.ppm";
-
-void init() {
+void init() { //anything that needs to be initialized after the code compiless
 	piston_1.set_value(false);
 	piston_2.set_value(false);
+
+	left_front.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+	right_front.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+	left_back.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+	right_back.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+	left_mid.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+	right_mid.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
 }
 
-void auton() {
+void auton() { //anything that needs to be called when the auton period starts
+	left_front.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+	right_front.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+	left_back.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+	right_back.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+	left_mid.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+	right_mid.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 	
 }
 
-void drive(auto master) {
+void drive(auto master) { //whatever the hell the bot is supposed to do when you press the little buttons on the controller
 	if (master.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT)) {
 		if (!prevDrivingDirectionButton) {
 			drivingDirection = !drivingDirection;

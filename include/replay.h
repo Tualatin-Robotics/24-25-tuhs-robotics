@@ -1,13 +1,9 @@
-#include <fstream>
-#include <cstring>
-#include <filesystem>
-#include <cstdio>
-using namespace std;
 
 fstream theFile;
 
 void logInputs(pros::Controller master,fstream &theFile){
-	theFile<<master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_X) << " , " <<
+	theFile<<
+		master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_X) << " , " <<
 		master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y) << " , " <<
 		master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X) << " , " <<
 		master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y) << " , " <<
@@ -27,7 +23,7 @@ void logInputs(pros::Controller master,fstream &theFile){
 
 void open_auton_file(string fileName, bool overwrite) {
 	if (overwrite) {
-		remove("/usd/a_team_auton_file.txt");
+		remove(fileName);
 	}
 	theFile.open(fileName,std::ios_base::in);
 }
@@ -83,7 +79,6 @@ class ReplayController{
 		else{
 			donePlaying=false;
 			for(int i=0;i<16;++i) buttons[i]=0;
-			//buttons[0]=buttons[1]=buttons[2]=buttons[3]=buttons[4]=buttons[5]=buttons[6]=buttons[7]=buttons[8]=buttons[9]=buttons[10]=buttons[11]=buttons[12]=buttons[13]=buttons[14]=buttons[15]=0;
 		}
 		
 	}
@@ -98,6 +93,7 @@ class ReplayController{
 				theFile.close();
 				cout<<"Recording Stopped!";
 				is_recording_auton=false;
+				init();
 				pros::delay(1000);
 			}
 		}
@@ -110,6 +106,7 @@ class ReplayController{
 				theFile.open(fileName,std::ios_base::out);
 				cout << "Recording!";
 				is_recording_auton = true;
+				auton();
 			}
 		}
 	}
