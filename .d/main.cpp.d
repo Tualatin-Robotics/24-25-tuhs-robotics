@@ -1,4 +1,4 @@
-bin/main.cpp.o: src/main.cpp include/b_team.h include/main.h \
+bin/main.cpp.o: src/main.cpp include/c_team.h include/main.h \
  include/api.h include/pros/adi.h include/pros/colors.h \
  include/pros/device.h include/pros/distance.h include/pros/error.h \
  include/pros/ext_adi.h include/pros/adi.h include/pros/adi.h \
@@ -20,7 +20,7 @@ bin/main.cpp.o: src/main.cpp include/b_team.h include/main.h \
  include/pros/screen.hpp include/pros/screen.h include/pros/vision.hpp \
  include/pros/vision.h include/variables.h include/replay.h \
  include/display.h
-include/b_team.h:
+include/c_team.h:
 include/main.h:
 include/api.h:
 include/pros/adi.h:
