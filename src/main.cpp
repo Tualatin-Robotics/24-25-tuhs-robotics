@@ -23,6 +23,7 @@ pros::Controller master(pros::E_CONTROLLER_MASTER);
 ReplayController replay(fileName);//each team file will have to declare string fileName, providing a path to the appropriate file for the bot
 
 void initialize() {
+	//pros::Motor::set_brake_mode(1);
 	init();
 	
 	drawScreenImage(imageName);
@@ -31,7 +32,7 @@ void initialize() {
 void autonomous() {
 	theFile.open(fileName,std::ios_base::in);
 	while(true) {
-		replay.updateFrame(true);//set argument to false if you want the bot to execute the replay to execute exactly as it was recorded
+		replay.updateFrame(false);//set argument to false if you want the bot to execute the replay to execute exactly as it was recorded
 		drive(replay);
 		pros::delay(20);
 		//pros::delay(20-pros::millis()%20);
