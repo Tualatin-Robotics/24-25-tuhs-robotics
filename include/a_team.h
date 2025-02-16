@@ -8,12 +8,12 @@
 
 pros::Motor left_front(18);
 pros::Motor right_front(1);
-pros::Motor left_back(20);
+pros::Motor left_back(12);
 pros::Motor left_mid(19);
 pros::Motor right_mid(2);
 pros::Motor right_back(3);
 pros::Motor roller(11);
-pros::Motor lift(12);
+pros::Motor lift(9);
 
 pros::adi::DigitalOut piston_1 (DIGITAL_SENSOR_PORT_1);
 pros::adi::DigitalOut piston_2 (DIGITAL_SENSOR_PORT_2);
