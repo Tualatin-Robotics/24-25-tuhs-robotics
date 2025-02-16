@@ -21,12 +21,12 @@ void logInputs(pros::Controller master,fstream &theFile){
 		master.get_digital(pros::E_CONTROLLER_DIGITAL_A) << " ,\n";
 }
 
-void open_auton_file(string fileName, bool overwrite) {
+/*void open_auton_file(string fileName, bool overwrite) {
 	if (overwrite) {
 		remove(fileName);
 	}
 	theFile.open(fileName,std::ios_base::in);
-}
+}*/
 
 class ReplayController{
 	public:
