@@ -26,6 +26,7 @@ pros::Controller master(pros::E_CONTROLLER_MASTER);
 ReplayController replay(fileName);//each team file will have to declare string fileName, providing a path to the appropriate file for the bot
 
 void initialize() {
+	//pros::Motor::set_brake_mode(1);
 	init();
 	
 	drawScreenImage(imageName);
