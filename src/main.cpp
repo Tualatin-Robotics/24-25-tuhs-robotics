@@ -1,5 +1,5 @@
 //Change team here:
-#define PROGRAMMER_TEAM
+#define C_TEAM
 // Team names include: A_TEAM, B_TEAM, C_TEAM, and PROGRAMMER_TEAM
 
 #ifdef A_TEAM

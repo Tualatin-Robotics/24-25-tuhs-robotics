@@ -7,10 +7,11 @@ string fileName="/usd/c_team_auton_file.txt";//change this to an auton file path
 string imageName="/usd/img.ppm";//change this to an image file path (.ppm) on the SD card
 
 // Motor definitions:
-pros::Motor left_front(19);
+pros::Motor left_front(17);
 pros::Motor right_front(20);
-pros::Motor left_back(18);
-pros::Motor right_back(17);
+pros::Motor left_back(19);
+pros::Motor right_back(18);
+pros::Motor lift(16);
 
 void init() { //anything that needs to be initialized after the code compiles
 	left_front.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
