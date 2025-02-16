@@ -15,13 +15,21 @@
         "UNICODE",
         "_UNICODE"
       ],
+<<<<<<< HEAD
       "compilerPath": "/home/kol/.config/Code/User/globalStorage/sigbots.pros/install/pros-toolchain-linux/bin/arm-none-eabi-g++",
+=======
+      "compilerPath": "c:\\Users\\silas\\AppData\\Roaming\\Code\\User\\globalStorage\\sigbots.pros\\install\\pros-toolchain-windows\\usr\\bin\\arm-none-eabi-g++",
+>>>>>>> 8faed4e7c8a8fd1b68e044a75ed913be49177fd5
       "cStandard": "gnu11",
       "cppStandard": "gnu++20",
       "intelliSenseMode": "gcc-arm",
       "browse": {
         "path": [
+<<<<<<< HEAD
           "/home/kol/Documents/Vex Robotics/transfer/24-25-tuhs-robotics"
+=======
+          "c:\\Users\\silas\\SSTUFF\\Program Documents\\Godot\\24-25-tuhs-robotics"
+>>>>>>> 8faed4e7c8a8fd1b68e044a75ed913be49177fd5
         ],
         "limitSymbolsToIncludedHeaders": true,
         "databaseFilename": ""

@@ -25,7 +25,7 @@ void drive(auto master) {
 	int left = master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
 	int right = master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
 	int triggle_up = master.get_digital(pros::E_CONTROLLER_DIGITAL_L2);
-	int triggle_down = master.get_digital(pros::E_CONTROLLER_DIGITAL_L1);; 
+	int triggle_down = master.get_digital(pros::E_CONTROLLER_DIGITAL_L1);
 	int up = master.get_digital(pros::E_CONTROLLER_DIGITAL_UP);
 	int down = master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN);
 
