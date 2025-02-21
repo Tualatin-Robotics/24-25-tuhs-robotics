@@ -2,6 +2,18 @@ Official 2024-2025 season feedback and review. This should be used to make chang
 
 START : What do we need to start doing to improve how we work as a team?
 
+  - Separate code repositories for each team
+  - Specific programmers assigned to each team
+  - A better teaching program (updated programming slides, YouTube videos about complex subjects, etc.)
+  - Design programming challenges / exercises for newer programmers
+
 STOP : What have we done that was unhelpful and should not be done next season?
 
+  - Stop copying code between teams
+
 CONTINUE : What are we currently doing that worked well and we should continue doing?
+
+  - Writing code :D
+  - Effective replay system
+  - Having fun!
+  - Teaching new programmers
